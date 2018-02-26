@@ -51,6 +51,7 @@ public class MainActivity extends Activity {
         Log.d("Concepto", what);
         double cost=Double.parseDouble(cantidad.getText().toString());
         Log.d("Costo", Double.toString(cost));
+        
         if(ingreso.isChecked()){
             Log.d("Costo", "ingreso");
         }else{
