@@ -8,13 +8,14 @@
     tools:context="com.example.beatr.miscuentas.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/calendario"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:background="@android:color/white"
+        android:onClick="openCalendar"
         android:text="Calendario"
         android:textColor="@android:color/background_dark"
         android:textSize="26sp"
@@ -23,36 +24,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/eliminar"
         android:layout_width="82dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/white"
+        android:onClick="elimina"
         android:text="Eliminar"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/agregar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/agregar"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@android:color/white"
+        android:onClick="agrega"
         android:text="Agregar"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton1" />
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toEndOf="@+id/listo"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/listo"
         android:layout_width="82dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -66,21 +69,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/agregar" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="Fecha"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" />
 
     <TextView
         android:id="@+id/textView3"
@@ -92,7 +94,7 @@
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/fecha" />
 
     <TextView
         android:id="@+id/textView4"
@@ -101,35 +103,35 @@
         android:text="Cantidad:"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/cantidad"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/cantidad" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/cantidad"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Ej: 20.99"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/concepto" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/concepto"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="41dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Ej: Café"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,38 +140,41 @@
         app:layout_constraintTop_toTopOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.8" />
 
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radioGroup"
+        android:layout_width="263dp"
+        android:layout_height="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:buttonTint="#e75748"
-        android:checked="true"
-        android:fontFamily="@font/lato"
-        android:text="Egreso"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.699"
-        app:layout_constraintStart_toEndOf="@+id/radioButton2"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="36dp"
-        android:buttonTint="#e75748"
-        android:fontFamily="@font/lato"
-        android:text="Ingreso"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/cantidad">
+
+        <RadioButton
+            android:id="@+id/ingreso"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:buttonTint="#e75748"
+            android:fontFamily="@font/lato"
+            android:text="Ingreso"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/egreso"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60dp"
+            android:buttonTint="#e75748"
+            android:fontFamily="@font/lato"
+            android:text="Egreso"
+            android:textColor="@android:color/black"
+            android:checked="true"
+            android:textSize="20sp" />
+    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>
