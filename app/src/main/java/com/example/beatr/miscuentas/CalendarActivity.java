@@ -35,7 +35,7 @@ public class CalendarActivity extends Activity {
         Intent intent=new Intent();
         intent.putExtra("date",date);
         setResult(RESULT_OK,intent);
-        super.finish();
+        //super.finish();
     }
 
 }
