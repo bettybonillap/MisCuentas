@@ -43,35 +43,37 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==RESULT_OK && requestCode==REQUEST_CODE){
             if(data.hasExtra("date")){
-                //Persona p1=(Persona)data.getSerializableExtra("persona");
                 String fecha= data.getStringExtra("date");
                 date.setText(fecha);
             }
         }
     }
+
     public void agrega(View view){
         String fecha=date.getText().toString();
-        String what=concepto.getText().toString();
-        Log.d("Concepto", what);
-        double cost=Double.parseDouble(cantidad.getText().toString());
-        Log.d("Costo", Double.toString(cost));
-        boolean tipo=false;
-        if(ingreso.isChecked()){
-            Log.d("Costo", "ingreso");
-            tipo=true;
-        }else{
-            Log.d("Costo", "egreso");
-            tipo=false;
+        if(fecha!="") {
+            String what = concepto.getText().toString();
+            Log.d("Concepto", what);
+            double cost = Double.parseDouble(cantidad.getText().toString());
+            Log.d("Costo", Double.toString(cost));
+            boolean tipo = false;
+            if (ingreso.isChecked()) {
+                Log.d("Costo", "ingreso");
+                tipo = true;
+            } else {
+                Log.d("Costo", "egreso");
+                tipo = false;
+            }
+            int anioA = Integer.parseInt(fecha.substring(fecha.lastIndexOf('/') + 1, fecha.length()));
+            int mesA = Integer.parseInt(fecha.substring(fecha.indexOf('/') + 1, fecha.lastIndexOf('/')));
+            int diaA = Integer.parseInt(fecha.substring(0, fecha.indexOf('/')));
+            creaAnio(anioA);
+            creaMes(anioA, mesA);
+            creaSemana(anioA, mesA, diaA);
+            creaDia(anioA, mesA, diaA);
+            creaTransaccion(anioA, mesA, diaA, what, cost, tipo);
+            //verT(anioA,mesA,diaA);
         }
-        int anioA=Integer.parseInt(fecha.substring(fecha.lastIndexOf('/')+1,fecha.length()));
-        int mesA=Integer.parseInt(fecha.substring(fecha.indexOf('/')+1,fecha.lastIndexOf('/')));
-        int diaA=Integer.parseInt(fecha.substring(0,fecha.indexOf('/')));
-        creaAnio(anioA);
-        creaMes(anioA,mesA);
-        creaSemana(anioA,mesA,diaA);
-        creaDia(anioA,mesA,diaA);
-        creaTransaccion(anioA,mesA,diaA,what,cost,tipo);
-        //verT(anioA,mesA,diaA);
     }
 
     public void creaAnio(int anioA){
@@ -337,5 +339,11 @@ public class MainActivity extends Activity {
 
     public void elimina(View view){
 
+    }
+
+    public void ready(View view){
+        Intent it =new Intent(MainActivity.this,ConsultaActivity.class);
+        it.putParcelableArrayListExtra("aniolist", anios);
+        startActivity(it);
     }
 }
