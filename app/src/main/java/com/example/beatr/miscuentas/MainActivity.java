@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,8 +55,16 @@ public class MainActivity extends Activity {
         String fecha=date.getText().toString();
         if(fecha!="") {
             String what = concepto.getText().toString();
-            Log.d("Concepto", what);
+            if(TextUtils.isEmpty(what)) {//validacion
+                concepto.setError("Captura un valor");
+                return;
+            }
+            if(TextUtils.isEmpty(cantidad.getText().toString())) {//validacion
+                cantidad.setError("Captura un valor");
+                return;
+            }
             double cost = Double.parseDouble(cantidad.getText().toString());
+            Log.d("Concepto", what);
             Log.d("Costo", Double.toString(cost));
             boolean tipo = false;
             if (ingreso.isChecked()) {
@@ -73,6 +83,7 @@ public class MainActivity extends Activity {
             creaDia(anioA, mesA, diaA);
             creaTransaccion(anioA, mesA, diaA, what, cost, tipo);
             //verT(anioA,mesA,diaA);
+            Toast.makeText(getApplicationContext(),"agregado", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -338,7 +349,92 @@ public class MainActivity extends Activity {
     }
 
     public void elimina(View view){
+        String fecha=date.getText().toString();
+        if(fecha!="") {
+            String what = concepto.getText().toString();
+            if (TextUtils.isEmpty(what)) {//validacion
+                concepto.setError("Captura un valor");
+                return;
+            }
+            if (TextUtils.isEmpty(cantidad.getText().toString())) {//validacion
+                cantidad.setError("Captura un valor");
+                return;
+            }
+            double cost = Double.parseDouble(cantidad.getText().toString());
+            Log.d("Concepto", what);
+            Log.d("Costo", Double.toString(cost));
+            boolean tipo = false;
+            if (ingreso.isChecked()) {
+                Log.d("Costo", "ingreso");
+                tipo = true;
+            } else {
+                Log.d("Costo", "egreso");
+                tipo = false;
+            }
+            int anioA = Integer.parseInt(fecha.substring(fecha.lastIndexOf('/') + 1, fecha.length()));
+            int mesA = Integer.parseInt(fecha.substring(fecha.indexOf('/') + 1, fecha.lastIndexOf('/')));
+            int diaA = Integer.parseInt(fecha.substring(0, fecha.indexOf('/')));
 
+            int semanaA=0;
+            switch (diaA){ //saber que semana es
+                case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                    semanaA=1;
+                    Log.d("semana","1" );
+                    break;
+                case 8: case 9: case 10: case 11: case 12: case 13: case 14:
+                    semanaA=2;
+                    Log.d("semana","2" );
+                    break;
+                case 15: case 16: case 17: case 18: case 19: case 20: case 21:
+                    semanaA=3;
+                    Log.d("semana","3" );
+                    break;
+                case 22: case 23: case 24: case 25: case 26: case 27: case 28:
+                    semanaA=4;
+                    Log.d("semana","4" );
+                    break;
+                case 29: case 30: case 31:
+                    semanaA=5;
+                    Log.d("semana","5" );
+                    break;
+            }
+
+            int index=0;
+            int found=-1;
+            for (Anio an : anios) {
+                if (an.anio == anioA){
+                    Log.d("elimina","año encontrado" );
+                    for (Mes me : an.meses){
+                        if (me.mes == mesA){
+                            Log.d("elimina","mes encontrado" );
+                            for (Semana sem : me.semanas){
+                                if (sem.semana == semanaA){
+                                    Log.d("elimina","semana encontrada" );
+                                    for (Dia di : sem.dias) {
+                                        if(di.dia==diaA){
+                                            Log.d("elimina","dia encontrado");
+                                            for(Transaccion tra:di.transacciones){
+                                                if(what.equalsIgnoreCase(tra.concepto) && cost==tra.cantidad && tipo==tra.tipo) {
+                                                    found=index;
+                                                }
+                                                index++;
+                                            }
+                                            if(found!=-1){
+                                             di.transacciones.remove(found);
+                                                Toast.makeText(getApplicationContext(),"eliminado", Toast.LENGTH_SHORT).show();
+                                            }else{
+                                                Toast.makeText(getApplicationContext(),"no encontrado", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
     public void ready(View view){

@@ -33,7 +33,11 @@ public class CuentasAdapter extends ArrayAdapter<Transaccion> {
         TextView con =(TextView) convertView.findViewById(R.id.concepto);
         TextView can =(TextView) convertView.findViewById(R.id.cantidad);
         con.setText(transaccion.concepto);
-        can.setText(Double.toString(transaccion.cantidad));
+        String t="";
+        if(!transaccion.tipo){
+            t="-";
+        }
+        can.setText(t+Double.toString(transaccion.cantidad));
         return convertView;
     }
 }
