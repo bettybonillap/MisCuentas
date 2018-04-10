@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">MisCuentas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab1">Ingresos</string>
+    <string name="tab2">Egresos</string>
+    <string name="tab3">Consulta</string>
+    <string name="tab4">Estadísticas</string>
+    <string name="concepto">Concepto</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="button1">Eliminar</string>
+    <string name="button2">Agregar</string>
+    <string name="concepto_ex">Sueldo</string>
+    <string name="concepto_ex2">Café</string>
+    <string name="calendario">Calendario</string>
+    <string name="error">Captura un valor</string>
+    <string name="add">Agregado</string>
+    <string name="delete">Eliminado</string>
+    <string name="failed">No fue posible realizar acción</string>
+    <string name="saldo">Saldo:</string>
 </resources>

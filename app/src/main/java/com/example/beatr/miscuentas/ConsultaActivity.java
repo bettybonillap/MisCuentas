@@ -38,34 +38,6 @@ public class ConsultaActivity extends Activity {
         }
     }
 
-    private final int REQUEST_CODE=7007;
-
-    public void openCalendar(View view){
-        Intent intent=new Intent(ConsultaActivity.this,CalendarActivity.class);
-        startActivityForResult(intent,REQUEST_CODE);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==RESULT_OK && requestCode==REQUEST_CODE){
-            if(data.hasExtra("date")){
-                //Persona p1=(Persona)data.getSerializableExtra("persona");
-                String fecha= data.getStringExtra("date");
-                date.setText(fecha);
-                int anioA=Integer.parseInt(fecha.substring(fecha.lastIndexOf('/')+1,fecha.length()));
-                int mesA=Integer.parseInt(fecha.substring(fecha.indexOf('/')+1,fecha.lastIndexOf('/')));
-                int diaA=Integer.parseInt(fecha.substring(0,fecha.indexOf('/')));
-                cuentasAdapter.clear();
-                ArrayList<Transaccion> transacciones=findTransacciones(anioA,mesA,diaA);
-                if(transacciones.size()!=0){
-                    for(Transaccion tra:transacciones) {
-                        cuentasAdapter.add(tra);
-                    }
-                }
-
-            }
-        }
-    }
-
     public ArrayList<Transaccion> findTransacciones(int anioA,int mesA,int diaA){
         int semanaA=0;
         switch (diaA){ //saber que semana es

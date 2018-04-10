@@ -14,7 +14,7 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() { //para cambiar a la siguiente actividad despues de un tiempo
             @Override
             public void run() {
-                Intent it =new Intent(SplashActivity.this,MainActivity.class);
+                Intent it =new Intent(SplashActivity.this,TabbedActivity.class);
                 startActivity(it);
                 finish();
             }

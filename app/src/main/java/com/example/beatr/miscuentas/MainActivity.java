@@ -17,31 +17,26 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private TextView date;
-    private Button calendar;
     private EditText concepto,cantidad;
-    private RadioButton ingreso,egreso;
     public ArrayList<Anio> anios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         date=(TextView)findViewById(R.id.fecha);
-        calendar=(Button)findViewById(R.id.calendario);
         concepto=(EditText)findViewById(R.id.concepto);
         cantidad=(EditText)findViewById(R.id.cantidad);
-        ingreso=(RadioButton)findViewById(R.id.ingreso);
-        ingreso=(RadioButton)findViewById(R.id.ingreso);
         anios=new ArrayList<Anio>();
     }
 
-    private final int REQUEST_CODE=7007;
+    //private final int REQUEST_CODE=7007;
 
-    public void openCalendar(View view){
+    /*public void openCalendar(View view){
         Intent intent=new Intent(MainActivity.this,CalendarActivity.class);
         startActivityForResult(intent,REQUEST_CODE);
-    }
+    }*/
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==RESULT_OK && requestCode==REQUEST_CODE){
             if(data.hasExtra("date")){
@@ -50,9 +45,10 @@ public class MainActivity extends Activity {
             }
         }
     }
+    */
 
     public void agrega(View view){
-        String fecha=date.getText().toString();
+       /* String fecha=date.getText().toString();
         if(fecha!="") {
             String what = concepto.getText().toString();
             if(TextUtils.isEmpty(what)) {//validacion
@@ -84,7 +80,7 @@ public class MainActivity extends Activity {
             creaTransaccion(anioA, mesA, diaA, what, cost, tipo);
             //verT(anioA,mesA,diaA);
             Toast.makeText(getApplicationContext(),"agregado", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     public void creaAnio(int anioA){
@@ -283,7 +279,7 @@ public class MainActivity extends Activity {
                                 for (Dia di : sem.dias) {
                                     if(di.dia==diaA){
                                         Log.d("Crea transaccion","dia encontrado");
-                                        di.transacciones.add(new Transaccion(concepto,cantidad,tipo));
+                                        //di.transacciones.add(new Transaccion(concepto,cantidad,tipo));
                                     }
                                 }
                             }
@@ -349,7 +345,7 @@ public class MainActivity extends Activity {
     }
 
     public void elimina(View view){
-        String fecha=date.getText().toString();
+     /*   String fecha=date.getText().toString();
         if(fecha!="") {
             String what = concepto.getText().toString();
             if (TextUtils.isEmpty(what)) {//validacion
@@ -434,12 +430,12 @@ public class MainActivity extends Activity {
                 }
             }
 
-        }
+        }*/
     }
 
     public void ready(View view){
-        Intent it =new Intent(MainActivity.this,ConsultaActivity.class);
+       /* Intent it =new Intent(MainActivity.this,ConsultaActivity.class);
         it.putParcelableArrayListExtra("aniolist", anios);
-        startActivity(it);
+        startActivity(it);*/
     }
 }

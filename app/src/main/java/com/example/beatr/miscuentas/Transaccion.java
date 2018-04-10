@@ -8,16 +8,25 @@ import android.os.Parcelable;
  */
 
 public class Transaccion implements Parcelable {
+    public String fecha;
     public String concepto;
     public double cantidad;
     public boolean tipo; //true ingreso, 0 egreso
+    public int anio,mes,dia;
 
     public Transaccion(){}
 
-    public Transaccion(String concepto, double cantidad,boolean tipo){
+    public Transaccion(String concepto, double cantidad,boolean tipo, String fecha){
         this.concepto=concepto;
-        this.cantidad=cantidad;
         this.tipo=tipo;
+        //if(!tipo){
+           //cantidad=-cantidad;
+        //}
+        this.cantidad=cantidad;
+        this.fecha=fecha;
+        this.anio = Integer.parseInt(fecha.substring(fecha.lastIndexOf('/') + 1, fecha.length()));
+        this.mes= Integer.parseInt(fecha.substring(fecha.indexOf('/') + 1, fecha.lastIndexOf('/')));
+        this.dia = Integer.parseInt(fecha.substring(0, fecha.indexOf('/')));
     }
 
     // Required method to write to Parcel

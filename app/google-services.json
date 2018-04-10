@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "829403662626",
+    "firebase_url": "https://miscuentas-a0c5d.firebaseio.com",
+    "project_id": "miscuentas-a0c5d",
+    "storage_bucket": "miscuentas-a0c5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829403662626:android:b22d4e9ad7bcff2d",
+        "android_client_info": {
+          "package_name": "com.example.beatr.miscuentas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829403662626-7epkc7i4pjtt6gb5ugt0v8lk72f16a34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beatr.miscuentas",
+            "certificate_hash": "20c8489e1f1f87c8a8bde7d6b26f431fe81d202f"
+          }
+        },
+        {
+          "client_id": "829403662626-q51fndnt8gupbv51ppba1f6qtj71bpkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv2LMA3oZ4CqFc9DYVIMa4Iqmwfeo-5v4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829403662626-q51fndnt8gupbv51ppba1f6qtj71bpkc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

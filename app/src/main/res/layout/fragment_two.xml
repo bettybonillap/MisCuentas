@@ -1,41 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3fccbf"
-    tools:context="com.example.beatr.miscuentas.MainActivity">
+    android:background="#edfcfa"
+    tools:context="com.example.beatr.miscuentas.TwoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:id="@+id/calendario"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
+        android:text="@string/calendario"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/eliminar"
         android:layout_width="82dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/white"
-        android:onClick="elimina"
-        android:text="Eliminar"
+        android:text="@string/button1"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cantidad" />
+        app:layout_constraintTop_toBottomOf="@+id/cantidad"
+        app:layout_constraintVertical_bias="0.323" />
 
     <Button
         android:id="@+id/agregar"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/white"
-        android:onClick="agrega"
-        android:text="Agregar"
+        android:text="@string/button2"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cantidad" />
+        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintStart_toEndOf="@+id/eliminar"
+        app:layout_constraintTop_toBottomOf="@+id/cantidad"
+        app:layout_constraintVertical_bias="0.323" />
 
     <TextView
         android:id="@+id/fecha"
@@ -43,13 +62,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
-        android:text="fecha"
+        android:layout_marginTop="36dp"
+        android:text=""
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" />
 
     <TextView
         android:id="@+id/textView3"
@@ -57,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:text="Concepto:"
+        android:text="@string/concepto"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,46 +87,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:text="Cantidad:"
+        android:text="@string/cantidad"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/cantidad"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/cantidad"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/cantidad"
-        android:layout_width="wrap_content"
+        android:layout_width="178dp"
         android:layout_height="43dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:ems="10"
-        android:hint="Ej: 20.99"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.343"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/concepto" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/concepto"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
+        android:completionThreshold="1"
         android:ems="10"
-        android:hint="Ej: Café"
         android:inputType="text"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.72" />
 
 </android.support.constraint.ConstraintLayout>
